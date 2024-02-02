@@ -4,6 +4,7 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 def add_contact(args, contacts):
     # Перевіряємо, щоб після add йшов список з ім'ям та телефоном
     if len(args) != 2:
