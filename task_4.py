@@ -1,9 +1,7 @@
-
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
-
 
 def add_contact(args, contacts):
     # Перевіряємо, щоб після add йшов список з ім'ям та телефоном
@@ -21,7 +19,6 @@ def add_contact(args, contacts):
         return "Contact added."
     else:
         return "Contact already exists." # В іншому випадку виводимо, що вже контакт існує
-
 
 def change_contact(args, contacts):
     # Перевіряємо, щоб після change йшов список з ім'ям та телефоном
@@ -53,15 +50,13 @@ def show_phone(args, contacts):
         return "Contact doesn`t exists." # В іншому випадку виводимо, що контакт не існує
     
 
-
 def show_all(contacts):
     # Якщо словник не пустий, виводимо контакти через enter
     if contacts:
         return "\n".join(f"{name}: {phone}" for name, phone in contacts.items())
     else:
         return "No contacts."
-        
-
+    
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
@@ -91,8 +86,6 @@ def main():
 
         else:
             print("Invalid command.")
-
-
 
 
 if __name__ == "__main__":
