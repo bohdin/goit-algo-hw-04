@@ -1,31 +1,37 @@
 import colorama
 import sys
-import pathlib
+from pathlib import Path
+
 def get_path():
+    # Отримання шляху з аргументів командного рядка
     current_directory = sys.argv[1]
     
     # Створення об'єкта Path
-    path = pathlib.Path(current_directory)
+    path = Path(current_directory)
     
-    path_visualization(path, 1)
-
-
-
-
-
-def path_visualization(path, count):
-
     # Перевірка, чи директорія існує
     if not path.exists() or not path.is_dir():
-        print(f"{path} не є дійсною директорією.")
+        print(f"{colorama.Fore.RED}{path} не є дійсною директорією.{colorama.Style.RESET_ALL}")
         return
+    
+    # Виклик функції для візуалізації структури
+    path_visualization(path)
 
+
+
+
+
+def path_visualization(path, indent=''):
     # Виведення імен файлів та піддиректорій
-    print(path.name)
+    print(f'{indent}{colorama.Fore.BLUE}[]{path.name}{colorama.Style.RESET_ALL}')
+
+    # Проходимо по елементам директорії
     for item in path.iterdir():
         if item.is_dir():
-            path_visualization(item, count+2)
+             # Рекурсивний виклик для піддиректорій
+            path_visualization(item, indent + ' |')
         else:
-            print(" "*count + item.name)
+            # Виведення файлів
+            print(f'{indent} | - {colorama.Fore.YELLOW}{item.name}{colorama.Style.RESET_ALL}')
 
 get_path()
