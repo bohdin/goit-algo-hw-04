@@ -10,7 +10,7 @@ def total_salary(path):
             # Ітерація по рядках
             for line in lines:
                 # Розбивка рядка на ім'я та зарплату
-                _, salary = line.split(',')
+                _, salary = line.strip().split(',')
                 # Конвертація зарплати у int і додавання до суми
                 salary = int(salary)
                 sum += salary
